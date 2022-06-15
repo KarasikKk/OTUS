@@ -1,4 +1,4 @@
-package com.example.OTUS;
+package com.example.otus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
