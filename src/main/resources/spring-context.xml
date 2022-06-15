@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="questionParser"
+    class="com.example.otus.parser.impl.QuestionParserImpl">
+        <constructor-arg name="FILE_PATH" value="src/main/resources/questions.csv"/>
+    </bean>
+
+    <bean id="questionConverter"
+    class="com.example.otus.mapper.QuestionConverter">
+    </bean>
+
+    <bean id="questionPrintService"
+          class="com.example.otus.service.impl.QuestionPrintServiceImpl">
+        <constructor-arg name="questionParser" ref="questionParser"/>
+    </bean>
+
+    <bean id="appRunner"
+          class="com.example.otus.service.impl.AppRunnerImpl">
+        <constructor-arg name="questionService" ref="questionService"/>
+    </bean>
+
+    <bean id="questionService"
+          class="com.example.otus.service.impl.QuestionServiceImpl">
+        <constructor-arg name="questionPrintService" ref="questionPrintService"/>
+    </bean>
+
+</beans>
